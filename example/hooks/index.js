@@ -1,4 +1,4 @@
-import Brahmos, { useState, useEffect, useRef } from 'brahmos';
+import Brahmos, { useState, useEffect, useRef, useMemo } from 'brahmos';
 import ReactCredit from '../common/ReactCredit';
 
 function useInterval(callback, delay) {
@@ -25,6 +25,7 @@ export default function Counter() {
   const [count, setCount] = useState(0);
   const [delay, setDelay] = useState(1000);
   const [isRunning, setIsRunning] = useState(true);
+  const [fiboRange, setFiboRange] = useState(10);
 
   useInterval(
     () => {
@@ -46,7 +47,8 @@ export default function Counter() {
     <>
       <p>
         This demo demonstrates usage of hooks in Brahmos. The example here uses useState, useRef and
-        useEffect hooks to make setInterval declarative.
+        useEffect hooks to make setInterval declarative. And useMemo, to memorize expensive
+        operations.
       </p>
       <h1>{count}</h1>
       <input type="checkbox" checked={isRunning} onChange={handleIsRunningChange} /> Running
